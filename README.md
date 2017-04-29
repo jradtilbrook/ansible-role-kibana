@@ -1,4 +1,4 @@
-# Ansible Role: Kibana
+# Ansible Role: Kibana [![Build Status](https://travis-ci.org/jradtilbrook/ansible-role-kibana.svg?branch=master)](https://travis-ci.org/jradtilbrook/ansible-role-kibana)
 
 This role installs and configures Kibana 5.x for the Elastic stack.
 
