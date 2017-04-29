@@ -1,0 +1,14 @@
+---
+# change this to `latest` to always get the most up to date version
+kibana_install_state: present
+
+# this dictionary is written as is to the kibana.yml configuration file
+# so any valid properties are allowed
+kibana_config_settings:
+  server:
+    host: localhost
+    port: 5601
+  elasticsearch:
+    url: http://localhost:9200
+    preserveHost: true
+    requestTimeout: 300000

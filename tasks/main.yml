@@ -1,0 +1,36 @@
+---
+- name: ensure apt-transport-https installed
+  apt:
+    pkg: apt-transport-https
+    state: present
+
+- name: add elasticstack GPG key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: add elasticstack repository
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main
+    state: present
+    update_cache: yes
+
+- name: install kibana
+  apt:
+    pkg: kibana
+    state: "{{ kibana_install_state }}"
+
+- name: copy kibana configuration
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart kibana
+
+- name: start and enable kibana
+  service:
+    name: kibana
+    state: started
+    enabled: yes
