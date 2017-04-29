@@ -8,5 +8,10 @@
         update_cache: yes
         cache_valid_time: 600
 
+    - name: install test dependencies
+      apt:
+        pkg: curl
+        state: present
+
   roles:
     - role_under_test
